@@ -1,0 +1,463 @@
+/* ==========================================================
+   Doce Sabor - estilos do site
+   ========================================================== */
+
+/* Cores e fontes em um só lugar: para mudar o visual, altere aqui */
+:root {
+    --cacau: #3a2218;
+    --cacau-suave: #5a3a2b;
+    --creme: #fbf6ee;
+    --areia: #efe4d2;
+    --linha: #dccdb4;
+    --caramelo: #96561a;
+    --mel: #e2b077;
+
+    --fonte-titulo: Georgia, "Times New Roman", serif;
+    --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-padding-top: 5rem; /* o menu fixo não cobre o título da seção */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    font-family: var(--fonte-texto);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    background-color: var(--creme);
+    color: var(--cacau);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-titulo);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    max-width: 62ch;
+}
+
+p + p {
+    margin-top: 1rem;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--caramelo);
+    outline-offset: 3px;
+}
+
+/* Largura máxima do conteúdo, centralizado */
+.container {
+    width: min(100% - 2.5rem, 1100px);
+    margin-inline: auto;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--creme);
+    border-bottom: 1px solid var(--linha);
+}
+
+.cabecalho-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    padding-block: 1rem;
+}
+
+.marca {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cacau);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    list-style: none;
+}
+
+.menu a {
+    color: var(--cacau);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.menu a:hover {
+    color: var(--caramelo);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+/* ---------- Botões ---------- */
+
+.botao {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.botao-claro {
+    background-color: var(--mel);
+    color: var(--cacau);
+}
+
+.botao-claro:hover {
+    background-color: #edc590;
+}
+
+.botao-contorno {
+    border-color: var(--mel);
+    color: var(--mel);
+}
+
+.botao-contorno:hover {
+    background-color: rgba(226, 176, 119, 0.15);
+}
+
+.botao-escuro {
+    background-color: var(--caramelo);
+    color: var(--creme);
+}
+
+.botao-escuro:hover {
+    background-color: var(--cacau);
+}
+
+/* ---------- Início (hero) ---------- */
+
+.hero {
+    background-color: var(--cacau);
+    color: var(--creme);
+    padding-block: 5rem;
+}
+
+.hero-grade {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    margin-bottom: 1.25rem;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: #ead9c4;
+}
+
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.aviso {
+    border: 1px solid rgba(251, 246, 238, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.aviso h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.aviso ul {
+    list-style: none;
+}
+
+.aviso li {
+    padding-block: 0.75rem;
+    border-top: 1px solid rgba(251, 246, 238, 0.2);
+}
+
+/* ---------- Seções ---------- */
+
+.secao {
+    padding-block: 4.5rem;
+}
+
+.secao-alt {
+    background-color: var(--areia);
+}
+
+.introducao {
+    color: var(--cacau-suave);
+    margin-bottom: 2.5rem;
+}
+
+/* ---------- Produtos ---------- */
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fffdf9;
+    border: 1px solid var(--linha);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Foto do produto: ocupa a largura do card, com altura fixa e sem distorcer */
+.card > img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Área da foto: aceita emoji ou <img> */
+.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    background-color: var(--areia);
+    font-size: 4rem;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-corpo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.25rem;
+}
+
+.card-corpo p {
+    color: var(--cacau-suave);
+}
+
+.card-corpo .preco {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--caramelo);
+}
+
+.unidade {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--cacau-suave);
+}
+
+/* ---------- Como pedir ---------- */
+
+.passos {
+    list-style: none;
+    counter-reset: passo;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.passos li {
+    counter-increment: passo;
+    border-top: 3px solid var(--caramelo);
+    padding-top: 1rem;
+}
+
+.passos li::before {
+    content: counter(passo);
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--caramelo);
+}
+
+/* ---------- Sobre ---------- */
+
+.sobre-grade {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.destaques {
+    list-style: none;
+    border-left: 3px solid var(--caramelo);
+    padding-left: 1.5rem;
+}
+
+.destaques li + li {
+    margin-top: 1.25rem;
+}
+
+.destaques strong {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: 1.15rem;
+}
+
+/* ---------- Contato ---------- */
+
+.contatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.5rem;
+    margin-block: 2rem;
+}
+
+.contatos dt {
+    font-weight: 700;
+    color: var(--caramelo);
+}
+
+.contatos a {
+    color: var(--cacau);
+    text-underline-offset: 3px;
+}
+
+.contatos a:hover {
+    color: var(--caramelo);
+}
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+    background-color: var(--cacau);
+    color: #ead9c4;
+    padding-block: 1.75rem;
+    font-size: 0.95rem;
+}
+
+.rodape-conteudo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+}
+
+/* ---------- Telas pequenas ---------- */
+/* Regra simples: o CSS acima vale para o computador.
+   Tudo o que está dentro de @media abaixo só vale quando a tela é estreita. */
+
+/* Tablets e celulares (até 800px de largura) */
+@media (max-width: 800px) {
+    .hero {
+        padding-block: 3.5rem;
+    }
+
+    .secao {
+        padding-block: 3.5rem;
+    }
+
+    /* Colunas lado a lado viram uma embaixo da outra */
+    .hero-grade,
+    .sobre-grade,
+    .passos {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-grade,
+    .sobre-grade {
+        gap: 2rem;
+    }
+
+    h2 {
+        font-size: 1.65rem;
+    }
+
+    /* Marca em cima, menu embaixo, centralizados */
+    .cabecalho-conteudo {
+        justify-content: center;
+    }
+
+    /* Links maiores, mais fáceis de tocar com o dedo */
+    .menu {
+        justify-content: center;
+    }
+
+    .menu a {
+        display: inline-block;
+        padding: 0.5rem 0.25rem;
+    }
+
+    /* O menu ocupa duas linhas no celular, então damos mais espaço ao rolar até a seção */
+    html {
+        scroll-padding-top: 8rem;
+    }
+}
+
+/* Celulares pequenos (até 480px de largura) */
+@media (max-width: 480px) {
+    body {
+        font-size: 1rem;
+    }
+
+    /* Botões ocupam a largura toda: fácil de tocar */
+    .hero-botoes .botao,
+    .botao-escuro {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Rodapé centralizado, um texto embaixo do outro */
+    .rodape-conteudo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card > img {
+        height: 180px;
+    }
+}
